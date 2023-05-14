@@ -1,0 +1,23 @@
+
+<h2>Prueba de audio</h2>
+<div class="row">
+  <div class="col-md-4">
+    <button class="btn btn-outline-primary" (click)="start()">Start</button>
+    <button class="btn btn-outline-danger" (click)="stop()">Stop</button>
+  </div>
+  <div class="col-md-8">
+    <textarea class="form-control" [(ngModel)]="transcription"></textarea> 
+  </div>
+</div>
+
+<div class="row">
+  <div class="col 12">
+    <h5>Proceso</h5>
+    <input type="text" [(ngModel)]="tituloProceso" class="form-control" readonly>
+  </div>
+</div>
+<div class="row">
+  <div class="col-8">
+    <app-tabla-proceso></app-tabla-proceso>
+  </div>
+</div>
