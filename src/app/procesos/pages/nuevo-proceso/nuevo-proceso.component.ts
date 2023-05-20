@@ -8,7 +8,8 @@ import { OpenaiService } from 'src/app/services/openai.service';
 })
 export class NuevoProcesoComponent {
 
-  
+  public childMessage: string='';
+
   recognition: any;
   isRecording = false;
   transcription = '';
@@ -28,26 +29,19 @@ export class NuevoProcesoComponent {
         .map((result: any) => result.transcript)
         .join('');
       console.log(transcript);
-      if(transcript.includes('nuevo procedimiento')){
-       
+      if(transcript.includes('nuevo procedimiento')){ 
         let listaPalabras = transcript.split(" ");
         let nombreTitulo = '';
         let posicion=-1;
-        listaPalabras.forEach(function(value, index) {
-          
+        listaPalabras.forEach(function(value, index) { 
           if(value == 'procedimiento')
-            posicion = index;
-
+            posicion = index; 
           if(posicion != -1 && posicion < index)
-            nombreTitulo += value + ' ';
-          
-        });
-
-        
-        
+            nombreTitulo += value + ' '; 
+        }); 
         this.tituloProceso = nombreTitulo;
       }
-      this.transcription = transcript;
+      this.transcription =  this.transcription + ' '+transcript;
      openAIService.sendTranscript(transcript);
     });
 
@@ -66,6 +60,10 @@ export class NuevoProcesoComponent {
   stop() {
     this.isRecording = false;
     this.recognition.stop();
+    this.childMessage = this.transcription;
   }
+
+
+
 
 }

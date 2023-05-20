@@ -12,12 +12,12 @@
 
 <div class="row">
   <div class="col 12">
-    <h5>Proceso</h5>
+    <h5>Procedimiento</h5>
     <input type="text" [(ngModel)]="tituloProceso" class="form-control" readonly>
   </div>
 </div>
 <div class="row">
   <div class="col-8">
-    <app-tabla-proceso></app-tabla-proceso>
+    <app-tabla-proceso [childMessage]='childMessage'></app-tabla-proceso>
   </div>
 </div>
