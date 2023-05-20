@@ -1,6 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { OpenaiService } from 'src/app/services/openai.service';
+import { ActividadModel } from '../../modelo.objecto/actividad.model';
+import { FormatoTablas } from '../../negocio/formatotabla.service';
 
 @Component({
   selector: 'app-nuevo-proceso',
@@ -14,8 +16,9 @@ export class NuevoProcesoComponent {
   isRecording = false;
   transcription = '';
   tituloProceso ='';
+  public lista:ActividadModel[]= [];
 
-  constructor(private openAIService: OpenaiService ) {
+  constructor(private openAIService: OpenaiService , private _formatoTablas:FormatoTablas) {
 
     this.recognition = new (window.SpeechRecognition ||
       (window as any).webkitSpeechRecognition)();
@@ -61,6 +64,9 @@ export class NuevoProcesoComponent {
     this.isRecording = false;
     this.recognition.stop();
     this.childMessage = this.transcription;
+    this._formatoTablas.crearnuevoproceso( this.childMessage);
+    this.lista = this._formatoTablas.consultarLista();
+    console.log(this.lista);
   }
 
 
