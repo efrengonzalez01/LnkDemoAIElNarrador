@@ -85,6 +85,8 @@ export class FormatoTablas {
         
 
     }); 
+
+    //console.log("Palabras",sumarPalabras );
   }
   private  cuantosRepetidos(array: any, elemento : any) {
     var contador = 0;

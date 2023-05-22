@@ -31,7 +31,7 @@ export class NuevoProcesoComponent {
         .map((result: any) => result[0])
         .map((result: any) => result.transcript)
         .join('');
-      console.log(transcript);
+      //console.log(transcript);
       if(transcript.includes('nuevo procedimiento')){ 
         let listaPalabras = transcript.split(" ");
         let nombreTitulo = '';

@@ -6,12 +6,14 @@ import { TablaProcesoComponent } from './components/tabla-proceso/tabla-proceso.
 import { NuevoProcesoComponent } from './pages/nuevo-proceso/nuevo-proceso.component';
 import { FormsModule } from '@angular/forms';
 import { FormatoTablas } from './negocio/formatotabla.service';
+import { CrearDocumentoComponent } from './components/crear-documento/crear-documento.component';
 
 
 @NgModule({
   declarations: [
     NuevoProcesoComponent,
     TablaProcesoComponent,
+    CrearDocumentoComponent,
    
   ],
   imports: [
