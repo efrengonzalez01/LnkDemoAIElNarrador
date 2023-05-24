@@ -12,7 +12,10 @@
             <td> {{item.numero}}</td>
             <td> {{item.actividad}} </td>
             <td> {{item.rol }}</td>
-            <td>{{item.descripcion }}</td>
+            <td>
+                <p [innerHTML]="item.descripcion" >
+                </p>
+            </td>
           </tr>
     </tbody>
 </table>

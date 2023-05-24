@@ -5,11 +5,12 @@ import { ActividadModel } from "../modelo.objecto/actividad.model";
 export class FormatoTablas {
 
   private listaActividades: ActividadModel[] = [];
-  private  esagregarproceso= "narrador agregar proceso"
-  private  esagregaactividad= "narrador actividad"
-  private  esagregarol= "narrador rol"
-  private  esagregadescripcion= "narrador descripción"
-  private  claveNarrador= "narrador"
+  private  esagregarproceso= "narrador agregar proceso";
+  private  esagregaactividad= "narrador actividad";
+  private  esagregarol= "narrador rol";
+  private  esagregadescripcion= "narrador descripción";
+  private  esagregarsubtema= "narrador subtema";
+  private  claveNarrador= "narrador";
 
     constructor(){}
 
@@ -19,7 +20,7 @@ export class FormatoTablas {
     //idnetificar los  nuevos procesos
     var listapalaras = texto.split(' ');
     var sumarPalabras:string="";
-
+    var _newtema = "<br /> * ";
     var  index=0;
     listapalaras.forEach(element => {
         sumarPalabras = sumarPalabras +" " +element;
@@ -62,12 +63,12 @@ export class FormatoTablas {
 
         
         if(sumarPalabras.indexOf( this.esagregadescripcion.trim()) >0){
-          var contador = this.cuantosRepetidos(sumarPalabras.split(' '), this.claveNarrador);
+          var contador = this.cuantosRepetidos(sumarPalabras.split(' '), this.claveNarrador); 
           if(contador==1)
           {
             var txtinsert= sumarPalabras.replace(this.esagregadescripcion.trim() , ""); 
             txtinsert =txtinsert.replace(this.claveNarrador.trim() , "");
-            this.listaActividades[index-1].descripcion= txtinsert; 
+            this.listaActividades[index-1].descripcion=   txtinsert; 
           }
           if(contador==2){
             sumarPalabras= sumarPalabras.replace(this.esagregarol.trim() , ""); 
@@ -81,7 +82,23 @@ export class FormatoTablas {
 
         // todas las palabras claves que se agregen, seran
         // para el proceso actual ano ser que se encuentre  el texto de  "narrador agregar proceso"
-
+        if(sumarPalabras.indexOf( this.esagregarsubtema.trim()) >0){
+          var contador = this.cuantosRepetidos(sumarPalabras.split(' '), this.claveNarrador);
+         
+          if(contador==1)
+          {
+            var txtinsert= sumarPalabras.replace(this.esagregarsubtema.trim() , ""); 
+            txtinsert =txtinsert.replace(this.claveNarrador.trim() , "");
+            this.listaActividades[index-1].descripcion= this.listaActividades[index-1].descripcion + _newtema + txtinsert; 
+          }
+          if(contador==2){
+            sumarPalabras= sumarPalabras.replace(this.esagregarsubtema.trim() , ""); 
+            sumarPalabras=sumarPalabras.replace(this.claveNarrador.trim() , "");
+            sumarPalabras="";
+            sumarPalabras=' narrador'
+          }  
+          _newtema=''; 
+        }
         
 
     }); 
