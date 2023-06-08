@@ -4,6 +4,12 @@ import { ActividadModel } from "../modelo.objecto/actividad.model";
 @Injectable()
 export class FormatoTablas {
 
+
+/*
+EJEMPLO
+narrador agregar proceso  narrador actividad delfin narrador rol gerencia narrador descripción Hola mundo narrador subtema mexico narrador inicia negrita hola mundo  narrador termina negrita
+*/
+
   private listaActividades: ActividadModel[] = [];
   private  esagregarproceso= "narrador agregar proceso";
   private  esagregaactividad= "narrador actividad";
@@ -11,6 +17,8 @@ export class FormatoTablas {
   private  esagregadescripcion= "narrador descripción";
   private  esagregarsubtema= "narrador subtema";
   private  claveNarrador= "narrador";
+  private  esagregarnegritasinicio= "narrador inicia negrita";
+  private  esagregarnegritasfin= "narrador termina negrita";
 
     constructor(){}
 
@@ -83,8 +91,7 @@ export class FormatoTablas {
         // todas las palabras claves que se agregen, seran
         // para el proceso actual ano ser que se encuentre  el texto de  "narrador agregar proceso"
         if(sumarPalabras.indexOf( this.esagregarsubtema.trim()) >0){
-          var contador = this.cuantosRepetidos(sumarPalabras.split(' '), this.claveNarrador);
-         
+          var contador = this.cuantosRepetidos(sumarPalabras.split(' '), this.claveNarrador); 
           if(contador==1)
           {
             var txtinsert= sumarPalabras.replace(this.esagregarsubtema.trim() , ""); 
@@ -98,6 +105,19 @@ export class FormatoTablas {
             sumarPalabras=' narrador'
           }  
           _newtema=''; 
+        }
+
+
+        if(sumarPalabras.indexOf( this.esagregarnegritasinicio.trim()) >0){
+          var contador = sumarPalabras.indexOf( this.esagregarnegritasinicio.trim());
+          var contador2 = sumarPalabras.indexOf( this.esagregarnegritasfin.trim());
+          if(contador>=0 &&  contador2>=0 )
+          {
+            sumarPalabras= sumarPalabras.replace(this.esagregarnegritasinicio.trim() , ""); 
+            sumarPalabras=sumarPalabras.replace(this.esagregarnegritasfin.trim() , "");
+            this.listaActividades[index-1].descripcion= this.listaActividades[index-1].descripcion +"<b>"+sumarPalabras+"<b>";
+            sumarPalabras=""; 
+          }  
         }
         
 
