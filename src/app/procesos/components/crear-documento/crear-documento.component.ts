@@ -61,6 +61,6 @@ export class CrearDocumentoComponent {
       this.procesoArreglo.push(subArray);
     }
 
-    console.log(this.procesoArreglo);
+ 
   }
 }
