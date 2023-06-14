@@ -19,6 +19,8 @@ narrador agregar proceso  narrador actividad delfin narrador rol gerencia narrad
   private  claveNarrador= "narrador";
   private  esagregarnegritasinicio= "narrador inicia negrita";
   private  esagregarnegritasfin= "narrador termina negrita";
+  private  esagregarmayusculasinicio= "narrador inicia mayusculas";
+  private  esagregarmayusculasfin= "narrador termina mayusculas";
 
     constructor(){}
 
@@ -116,6 +118,18 @@ narrador agregar proceso  narrador actividad delfin narrador rol gerencia narrad
             sumarPalabras= sumarPalabras.replace(this.esagregarnegritasinicio.trim() , ""); 
             sumarPalabras=sumarPalabras.replace(this.esagregarnegritasfin.trim() , "");
             this.listaActividades[index-1].descripcion= this.listaActividades[index-1].descripcion +"<b>"+sumarPalabras+"<b>";
+            sumarPalabras=""; 
+          }  
+        }
+
+        if(sumarPalabras.indexOf( this.esagregarmayusculasinicio.trim()) >0){
+          var contador = sumarPalabras.indexOf( this.esagregarmayusculasinicio.trim());
+          var contador2 = sumarPalabras.indexOf( this.esagregarmayusculasfin.trim());
+          if(contador>=0 &&  contador2>=0 )
+          {
+            sumarPalabras= sumarPalabras.replace(this.esagregarmayusculasinicio.trim() , ""); 
+            sumarPalabras=sumarPalabras.replace(this.esagregarmayusculasfin.trim() , "");
+            this.listaActividades[index-1].descripcion= this.listaActividades[index-1].descripcion +sumarPalabras.toLocaleUpperCase();
             sumarPalabras=""; 
           }  
         }
