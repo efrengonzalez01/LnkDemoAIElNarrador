@@ -11,7 +11,7 @@ narrador agregar proceso  narrador actividad delfin narrador rol gerencia narrad
 */
 
   private listaActividades: ActividadModel[] = [];
-  private  esagregarproceso= "narrador agregar proceso";
+  private  esagregarproceso= "narrador agregar procedimiento";
   private  esagregaactividad= "narrador actividad";
   private  esagregarol= "narrador rol";
   private  esagregadescripcion= "narrador descripción";

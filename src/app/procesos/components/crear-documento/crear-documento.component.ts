@@ -27,13 +27,13 @@ export class CrearDocumentoComponent {
     const documentDefinition : TDocumentDefinitions= {
       content: [
         {
-          text: 'Procedimiento',
+          text: 'Procedimiento: Ventas de productos',
           style: 'header',
         },
         {
           table: {
             headerRows: 1,
-            widths: ['*', '*', '*'], // Ajusta los anchos de columna según sea necesario
+            widths: ['*', '*', '*','*'], // Ajusta los anchos de columna según sea necesario
             body: table,
           },
         },
